@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import Student from "./Student";
+
 import "./Fetcher.css";
 
 function Fetcher() {
   const [students, setStudents] = useState([]);
-
-  // useEffect(() => {
-  //     const url = "https://api.hatchways.io/assessment/students";
-  //     axios.get(url).then((response) => {
-  //       const studentsData = response.data.students;
-  //       console.log(studentsData)
-  //       setStudents(studentsData);
-  // });
+  const [processedList, setProcessedList] = useState([]);
 
   useEffect(() => {
     console.log("page loaded correct");
@@ -26,6 +21,19 @@ function Fetcher() {
     });
   });
 
+  function processStudentsData(students) {
+    console.log(25, students);
+    const processedList = [];
+    processedList.push(<Student key={students[0].id} props={students[0]} />);
+    console.log(27, processedList);
+    let testReturn = (
+      <div>
+        <h3>HEY</h3>
+      </div>
+    );
+    return testReturn;
+  }
+
   return (
     <div style={{ height: "400px", border: "3px solid black" }}>
       <div>
@@ -38,13 +46,7 @@ function Fetcher() {
         </button>
       </div>
       <div className="testContainer">
-        {students.length === 0 ? null : (
-          <div>
-            {students.forEach((student) => (
-              <p className="test lookHere">{student.city}</p>
-            ))}
-          </div>
-        )}
+        {students.length === 0 ? null : processStudentsData(students)}
       </div>
     </div>
   );
