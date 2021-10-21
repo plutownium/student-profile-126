@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import "./Fetcher.css";
+
 function Fetcher() {
   const [students, setStudents] = useState([]);
 
@@ -29,12 +31,23 @@ function Fetcher() {
       <div>
         <button
           onClick={() => {
-            console.log("ayylmao");
-            console.log(students, students.length);
+            console.log(students[0]);
           }}
         >
-          foooooooooo
+          woops
         </button>
+      </div>
+      <div className="testContainer">
+        {students.length === 0
+          ? null
+          : students.forEach((element) => {
+              console.log(element.city);
+              return (
+                <div>
+                  <p className="test lookHere">{element.city}</p>
+                </div>
+              );
+            })}
       </div>
     </div>
   );
