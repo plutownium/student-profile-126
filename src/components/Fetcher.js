@@ -1,37 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Fetcher() {
-  let mapped;
-  console.log("hadsfasf");
-  const url = "https://api.hatchways.io/assessment/students";
-  const getAllStudents = axios.get(url).then((response) => {
-    const studentData = response.data;
-    console.log(studentData, typeof studentData);
-    mapped = studentData;
+  const [students, setStudents] = useState([]);
+
+  // useEffect(() => {
+  //     const url = "https://api.hatchways.io/assessment/students";
+  //     axios.get(url).then((response) => {
+  //       const studentsData = response.data.students;
+  //       console.log(studentsData)
+  //       setStudents(studentsData);
+  // });
+
+  useEffect(() => {
+    console.log("page loaded correct");
+    const url = "https://api.hatchways.io/assessment/students";
+    axios.get(url).then((response) => {
+      console.log(response.data.students);
+      let studentData = response.data.students;
+      if (students.length === 0) {
+        setStudents(studentData);
+      }
+    });
   });
-  console.log("students length:", getAllStudents.length);
 
   return (
-    <div>
-      {mapped === null
-        ? " "
-        : mapped.map(function (student, index) {
-            <div>
-              <h1>Index: {index} </h1>
-              <h2>student.firstName student.lastName</h2>
-              <p>
-                <span>Email:</span> <span>student.email</span>
-              </p>
-              <p>
-                <span>Company:</span> <span>student.company</span>
-              </p>
-              <p>
-                <span>Skill:</span>
-                <span>student.skill</span>
-              </p>
-            </div>;
-          })}
+    <div style={{ height: "400px", border: "3px solid black" }}>
+      <div>
+        <button
+          onClick={() => {
+            console.log("ayylmao");
+            console.log(students, students.length);
+          }}
+        >
+          foooooooooo
+        </button>
+      </div>
     </div>
   );
 }

@@ -6,9 +6,11 @@ import Fetcher from "./components/Fetcher";
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
-      <div>
-        <Fetcher></Fetcher>
+      <div className="App-body">
+        <div id="App-BodyContainer">
+          <h1>Foo</h1>
+          <Fetcher></Fetcher>
+        </div>
       </div>
     </div>
   );
