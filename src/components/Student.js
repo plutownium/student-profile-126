@@ -1,17 +1,28 @@
 import React from "react";
 
+import "./Students.css";
+
 function Student({ firstName, lastName, city, email, skill, grades, pic }) {
   return (
     <div>
-      <h3>
-        {firstName} {lastName}
-      </h3>
-      <p>{city}</p>
-      <p>{email}</p>
-      <h4>
-        <p>{skill}</p>
-      </h4>
-      <ul>{grades}</ul>
+      <div className="studentContainer">
+        <div className="imageContainerOuter">
+          <div style={{ height: "80px", width: "80px" }}>
+            <img src={pic} />
+          </div>
+        </div>
+        <div>
+          <h3>
+            {firstName} {lastName}
+          </h3>
+          <p>{city}</p>
+          <p>{email}</p>
+          <h4>
+            <p>{skill}</p>
+          </h4>
+          <ul>{grades}</ul>
+        </div>
+      </div>
     </div>
   );
 }

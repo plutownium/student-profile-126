@@ -2,8 +2,17 @@
   text-align: center;
 }
 
-.App-BodyContainer {
-  border: 5px solid red;
+#App-BodyContainer {
+  border: 10px solid red;
+  height: 100%;
+  width: 600px;
+}
+
+.App-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {

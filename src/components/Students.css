@@ -1,0 +1,11 @@
+.studentContainer {
+  border: 10px solid #aaa;
+  display: flex;
+  flex-direction: row;
+}
+
+.imageContainerOuter {
+  border: 3px solid red;
+  height: auto;
+  width: auto;
+}

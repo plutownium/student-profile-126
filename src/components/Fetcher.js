@@ -22,24 +22,25 @@ function Fetcher() {
   });
 
   function processStudentsData(students) {
-    // const fixed = students.map((student) => (
-    //   <div key={student.id} className="testSuccessClass">
-    //     {student}
-    //   </div>
-    // ));
     const fixed = students.map((student) => (
       <Student
         key={student.id}
         firstName={student.firstName}
         lastName={student.lastName}
+        city={student.city}
+        email={student.email}
+        skill={student.skill}
+        grades={student.grades}
+        pic={student.pic}
         className="testSuccessClass"
-      ></Student>
+      />
     ));
     return fixed;
   }
 
   return (
-    <div style={{ height: "400px", border: "3px solid black" }}>
+    // <div style={{ height: "400px", border: "3px solid black" }}>
+    <div>
       <div>
         <button
           onClick={() => {
