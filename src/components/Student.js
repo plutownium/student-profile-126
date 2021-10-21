@@ -5,13 +5,13 @@ import "./Students.css";
 function Student({ firstName, lastName, city, email, skill, grades, pic }) {
   return (
     <div>
-      <div className="studentContainer">
-        <div className="imageContainerOuter">
-          <div style={{ height: "80px", width: "80px" }}>
+      <div className="studentContainer debug3">
+        <div className="imageContainerOuter debug2">
+          <div className="imageContainerInner debug1">
             <img src={pic} />
           </div>
         </div>
-        <div>
+        <div className="infoContainer debug2">
           <h3>
             {firstName} {lastName}
           </h3>

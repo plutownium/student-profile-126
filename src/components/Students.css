@@ -2,10 +2,35 @@
   border: 10px solid #aaa;
   display: flex;
   flex-direction: row;
+  align-items: start;
+}
+
+.studentContainer div {
+  /* flex-basis: 1; */
 }
 
 .imageContainerOuter {
   border: 3px solid red;
-  height: auto;
-  width: auto;
+  height: 100%;
+  width: 160px;
+}
+.imageContainerInner {
+  height: 100%;
+}
+
+.debug1 {
+  border: 5px solid cyan;
+}
+
+.debug2 {
+  border: 5px solid green;
+}
+
+.debug3 {
+  border: 5px dotted darkorange;
+}
+
+.infoContainer {
+  width: calc(100% - 160px);
+  /* calc() is the best part of CSS IMO */
 }
