@@ -1,21 +1,46 @@
-.studentContainer {
-  border: 10px solid #aaa;
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-}
-
-.studentContainer div {
-  /* flex-basis: 1; */
-}
-
 .imageContainerOuter {
   border: 3px solid red;
-  height: 100%;
+  height: auto;
   width: 160px;
 }
 .imageContainerInner {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainerInner img {
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.imageContainerHeightMod {
+  height: 160px;
+  /* flex-basis: 100%; */
+}
+
+.namingPolicy {
+  text-transform: uppercase;
+  font-size: 28px;
+  font-family: "Raleway", sans-serif;
+}
+
+.studentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  border: 10px solid #aaa;
+}
+
+.studentContainerHeightMod {
+  height: 180px;
+}
+
+.studentContainer div {
+  /* flex-basis: 1; */
 }
 
 .debug1 {

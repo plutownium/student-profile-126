@@ -5,14 +5,14 @@ import "./Students.css";
 function Student({ firstName, lastName, city, email, skill, grades, pic }) {
   return (
     <div>
-      <div className="studentContainer debug3">
-        <div className="imageContainerOuter debug2">
-          <div className="imageContainerInner debug1">
+      <div className="studentContainer studentContainerHeightMod ">
+        <div className="imageContainerOuter imageContainerHeightMod ">
+          <div className="imageContainerInner imageContainerHeightMod   ">
             <img src={pic} />
           </div>
         </div>
         <div className="infoContainer debug2">
-          <h3>
+          <h3 className="namingPolicy">
             {firstName} {lastName}
           </h3>
           <p>{city}</p>

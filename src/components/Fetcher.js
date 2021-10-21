@@ -41,15 +41,6 @@ function Fetcher() {
   return (
     // <div style={{ height: "400px", border: "3px solid black" }}>
     <div>
-      <div>
-        <button
-          onClick={() => {
-            console.log(students[0]);
-          }}
-        >
-          woops
-        </button>
-      </div>
       <div className="testContainer">
         {students.length === 0 ? null : processStudentsData(students)}
       </div>
