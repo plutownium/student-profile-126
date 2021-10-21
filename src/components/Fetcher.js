@@ -38,16 +38,9 @@ function Fetcher() {
         </button>
       </div>
       <div className="testContainer">
-        {students.length === 0
-          ? null
-          : students.forEach((element) => {
-              console.log(element.city);
-              return (
-                <div>
-                  <p className="test lookHere">{element.city}</p>
-                </div>
-              );
-            })}
+        {students.length === 0 ? null : (
+          <p className="test lookHere">{students[0].city}</p>
+        )}
       </div>
     </div>
   );
