@@ -27,8 +27,9 @@ function Fetcher() {
         key={student.id}
         firstName={student.firstName}
         lastName={student.lastName}
-        city={student.city}
+        // city={student.city}
         email={student.email}
+        company={student.company}
         skill={student.skill}
         grades={student.grades}
         pic={student.pic}

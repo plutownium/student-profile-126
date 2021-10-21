@@ -2,13 +2,22 @@ import React from "react";
 
 import "./Students.css";
 
-function Student({ firstName, lastName, city, email, skill, grades, pic }) {
+function Student({
+  firstName,
+  lastName,
+  //   city,
+  email,
+  company,
+  skill,
+  grades,
+  pic,
+}) {
   function calculateGPA(gradesInput) {
     let calculatedGPA = 0;
     for (let i = 0; i < gradesInput.length; i++) {
-      calculateGPA = calculateGPA + gradesInput[i];
+      calculatedGPA = calculatedGPA + gradesInput[i];
     }
-    calculateGPA = calculatedGPA / gradesInput.length;
+    calculatedGPA = calculatedGPA / gradesInput.length;
     return calculatedGPA;
   }
 
@@ -25,16 +34,16 @@ function Student({ firstName, lastName, city, email, skill, grades, pic }) {
             {firstName} {lastName}
           </h3>
           <div className="studentDetails">
-            <p>
+            <p className="detailsPolicy">
               Email: <span>{email}</span>
             </p>
-            <p>
+            <p className="detailsPolicy">
               Company: <span>{company}</span>
             </p>
-            <p>
+            <p className="detailsPolicy">
               Skill: <span>{skill}</span>
             </p>
-            <p>
+            <p className="detailsPolicy">
               Average: <span>{calculateGPA(grades)}</span>
             </p>
           </div>
