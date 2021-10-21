@@ -22,6 +22,15 @@
   /* flex-basis: 100%; */
 }
 
+.infoContainer {
+  width: calc(100% - 160px);
+  /* calc() is the best part of CSS IMO */
+}
+
+.infoContainer * {
+  margin: 5px 0;
+}
+
 .namingPolicy {
   text-transform: uppercase;
   font-size: 28px;
@@ -43,6 +52,17 @@
   /* flex-basis: 1; */
 }
 
+.studentDetails {
+  padding-left: 20px;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+}
+
+.studentDetails * {
+  text-align: left;
+}
+
 .debug1 {
   border: 5px solid cyan;
 }
@@ -53,9 +73,4 @@
 
 .debug3 {
   border: 5px dotted darkorange;
-}
-
-.infoContainer {
-  width: calc(100% - 160px);
-  /* calc() is the best part of CSS IMO */
 }
