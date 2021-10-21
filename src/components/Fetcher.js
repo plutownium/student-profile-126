@@ -39,7 +39,11 @@ function Fetcher() {
       </div>
       <div className="testContainer">
         {students.length === 0 ? null : (
-          <p className="test lookHere">{students[0].city}</p>
+          <div>
+            {students.forEach((student) => (
+              <p className="test lookHere">{student.city}</p>
+            ))}
+          </div>
         )}
       </div>
     </div>
