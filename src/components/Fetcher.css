@@ -1,13 +1,13 @@
-.lookHere {
-  border: 5px solid slateblue;
-}
-
 .test {
   font-size: 22px;
   color: blue;
 }
 
-/* .testContainer {
-  border: 3px solid darkred;
-  height: 350px;
-} */
+#mainContainerOuterWrapper {
+  height: calc(100% - 80px);
+}
+
+.mainContainer {
+  height: 80vh;
+  overflow-y: scroll;
+}

@@ -8,7 +8,9 @@ function App() {
     <div className="App">
       <div className="App-body">
         <div id="App-BodyContainer">
-          <Fetcher></Fetcher>
+          <div id="fetcherWrapper">
+            <Fetcher></Fetcher>
+          </div>
         </div>
       </div>
     </div>

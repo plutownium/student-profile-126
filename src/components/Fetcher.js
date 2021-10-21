@@ -40,9 +40,8 @@ function Fetcher() {
   }
 
   return (
-    // <div style={{ height: "400px", border: "3px solid black" }}>
-    <div>
-      <div className="testContainer">
+    <div className="mainContainerOuterWrapper">
+      <div className="mainContainer">
         {students.length === 0 ? null : processStudentsData(students)}
       </div>
     </div>
