@@ -22,26 +22,20 @@ function Fetcher() {
   });
 
   function processStudentsData(students) {
-    // console.log(25, students);
-    // const processedList = [];
-    // processedList.push(<Student key={students[0].id} props={students[0]} />);
-    // console.log(27, processedList);
-    let items = [];
-    for (let i = 0; i < students.length; i++) {
-      // items = items + (
-      //   <div>
-      //     <Student key={students[i].id} props={students} />
-      //   </div>
-      // );
-      items.push(
-        <div>
-          <Student key={students[i].id} props={students} />
-        </div>
-      );
-    }
-    console.log(42, items);
-    // return testReturn;
-    return items;
+    // const fixed = students.map((student) => (
+    //   <div key={student.id} className="testSuccessClass">
+    //     {student}
+    //   </div>
+    // ));
+    const fixed = students.map((student) => (
+      <Student
+        key={student.id}
+        firstName={student.firstName}
+        lastName={student.lastName}
+        className="testSuccessClass"
+      ></Student>
+    ));
+    return fixed;
   }
 
   return (
