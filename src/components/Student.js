@@ -25,12 +25,18 @@ function Student({ firstName, lastName, city, email, skill, grades, pic }) {
             {firstName} {lastName}
           </h3>
           <div className="studentDetails">
-            <p>{city}</p>
-            <p>{email}</p>
-            <h4>
-              <p>{skill}</p>
-            </h4>
-            <p>{calculateGPA(grades)}</p>
+            <p>
+              Email: <span>{email}</span>
+            </p>
+            <p>
+              Company: <span>{company}</span>
+            </p>
+            <p>
+              Skill: <span>{skill}</span>
+            </p>
+            <p>
+              Average: <span>{calculateGPA(grades)}</span>
+            </p>
           </div>
         </div>
       </div>
