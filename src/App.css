@@ -54,6 +54,8 @@
 }
 
 #fetcherWrapper {
-  border: 5px solid cyan;
+  /* // FIXME: make scrollbar have a border radius also, its currently bugged, no rhs border radius present */
+  /* border: 5px solid cyan; */
   background-color: white;
+  border-radius: 10px;
 }

@@ -2,18 +2,8 @@ import React from "react";
 
 import "./Students.css";
 
-function Student({
-  firstName,
-  lastName,
-  //   city,
-  email,
-  company,
-  skill,
-  grades,
-  pic,
-}) {
+function Student({ firstName, lastName, email, company, skill, grades, pic }) {
   function calculateGPA(gradesInput) {
-    console.log("AVERAGE THESE:", gradesInput);
     let calculatedGPA = 0;
     for (let i = 0; i < gradesInput.length; i++) {
       // arr input has strings, so, need to parseInt to add them
@@ -30,7 +20,7 @@ function Student({
       <div className="studentContainer studentContainerHeightMod">
         <div className="imageContainerOuter imageContainerHeightMod">
           <div className="imageContainerInner imageContainerHeightMod">
-            <img src={pic} />
+            <img src={pic} alt="a profile pic" />
           </div>
         </div>
         <div className="infoContainer">
