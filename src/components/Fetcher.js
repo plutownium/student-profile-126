@@ -5,9 +5,13 @@ import Student from "./Student";
 
 import "./Fetcher.css";
 
+import "./Filter";
+import "./Filter.css";
+
 function Fetcher() {
   const [students, setStudents] = useState([]);
   const [processedList, setProcessedList] = useState([]);
+  const [filterTargetText, setFilterTargetText] = useState("");
 
   useEffect(() => {
     console.log("page loaded correct");
@@ -41,6 +45,18 @@ function Fetcher() {
 
   return (
     <div className="mainContainerOuterWrapper">
+      <div id="filterContainerOuter">
+        <div id="filterContainerInner">
+          <input
+            id="filterInput"
+            onChange={(event) => {
+              console.log("checking...", event.target.value);
+              setTarget(event.target.value);
+            }}
+            placeholder="Search by name..."
+          />
+        </div>
+      </div>
       <div className="mainContainer">
         {students.length === 0 ? null : processStudentsData(students)}
       </div>

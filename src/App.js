@@ -7,22 +7,30 @@ import Filter from "./components/Filter";
 import Fetcher from "./components/Fetcher";
 
 function App() {
-  const [filterTargetText, setFilterTargetText] = useState("");
-
   return (
     <div className="App">
       <div className="App-body">
         <div id="App-BodyContainer">
-          <div id="nameFilterWrapper" className="wrapperStuff bDebug2">
+          {/* <div id="nameFilterWrapper" className="wrapperStuff bDebug2">
             <Filter
+              filterTargetText={filterTargetText}
               setTarget={() => {
                 setFilterTargetText();
                 // fixme; its something like this.
               }}
             />
-          </div>
+          </div> */}
           <div id="fetcherWrapper" className="wrapperStuff bDebug2">
             <Fetcher filterTargetText={filterTargetText}></Fetcher>
+          </div>
+          <div>
+            <button
+              onClick={() => {
+                console.log("hey,", filterTargetText);
+              }}
+            >
+              asdfsf
+            </button>
           </div>
         </div>
       </div>
