@@ -6,8 +6,9 @@ function Filter({ setTarget }) {
   // pass input name up to parent and then back down to Fetcher to filter
   return (
     <div id="filterContainerOuter">
-      <div>
+      <div id="filterContainerInner">
         <input
+          id="filterInput"
           onChange={(event) => {
             console.log("checking...", event.target.value);
             setTarget(event.target.value);

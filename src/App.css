@@ -3,9 +3,13 @@
   background-color: #ddd;
 }
 
+.bDebug2 {
+  border: 3px solid rgb(117, 182, 21);
+}
+
 #App-BodyContainer {
   height: 100vh;
-  /* width: 600px; */
+  width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
