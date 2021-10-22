@@ -1,9 +1,11 @@
 import React from "react";
 
+import "./Filter.css";
+
 function Filter({ setTarget }) {
   // pass input name up to parent and then back down to Fetcher to filter
   return (
-    <div>
+    <div id="filterContainerOuter">
       <div>
         <input
           onChange={(event) => {

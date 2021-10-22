@@ -5,8 +5,9 @@
 
 #App-BodyContainer {
   height: 100vh;
-  width: 600px;
+  /* width: 600px; */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -58,4 +59,8 @@
   /* border: 5px solid cyan; */
   background-color: white;
   border-radius: 10px;
+}
+
+#nameFilterWrapper {
+  width: 100%;
 }

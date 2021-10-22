@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <div className="App-body">
         <div id="App-BodyContainer">
-          <div id="nameFilterWrapper">
+          <div id="nameFilterWrapper" className="wrapperStuff">
             <Filter
               setTarget={() => {
                 setFilterTargetText();
@@ -21,7 +21,7 @@ function App() {
               }}
             />
           </div>
-          <div id="fetcherWrapper">
+          <div id="fetcherWrapper" className="wrapperStuff">
             <Fetcher filterTargetText={filterTargetText}></Fetcher>
           </div>
         </div>
