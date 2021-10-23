@@ -25,21 +25,20 @@ function Fetcher() {
     });
   }, []);
 
+  // function passesCurrentFilter(student) {
+  //   let fullName = student.firstName + " " + student.lastName;
+  //   console.log(student, 99, fullName);
+  //   return fullName.indexOf(filterTargetText) > -1;
+  // }
+
   function processStudentsData(students) {
-    let processedStudentsList = null;
-    let isFilteredByString = filterTargetText !== "";
-    if (isFilteredByString) {
-      let filteredStudents = students.filter((student) => {
-        const fullName = student.firstName + " " + student.lastName;
-        console.log(typeof fullName, fullName);
-        fullName.includes(filterTargetText);
-      });
-      console.log(50, 50, 50, 50, filteredStudents);
-      return filteredStudents;
-    } else {
-      processedStudentsList = students.map((student) => (
+    let processedStudentsList = [];
+
+    students.forEach((student) =>
+      processedStudentsList.push(
         <Student
           key={student.id}
+          fullName={student.firstName + " " + student.lastName}
           firstName={student.firstName}
           lastName={student.lastName}
           // city={student.city}
@@ -51,11 +50,26 @@ function Fetcher() {
           className="testSuccessClass"
           tags={["cat", "fish", "bird"]}
         />
-      ));
-    }
+      )
+    );
 
+    if (filterTargetText.length > 0) {
+      let upperFilterTargetText = filterTargetText.toUpperCase();
+      let filteredList = [];
+      for (let i = 0; i < processedStudentsList.length; i++) {
+        let upperCurrentEntry =
+          processedStudentsList[i].props.fullName.toUpperCase();
+        if (upperCurrentEntry.includes(upperFilterTargetText)) {
+          filteredList.push(processedStudentsList[i]);
+        }
+      }
+      return filteredList;
+    }
     return processedStudentsList;
   }
+
+  const processedStudents =
+    students.length === 0 ? null : processStudentsData(students);
 
   return (
     <div className="mainContainerOuterWrapper">
@@ -71,9 +85,7 @@ function Fetcher() {
           />
         </div>
       </div>
-      <div className="mainContainer">
-        {students.length === 0 ? null : processStudentsData(students)}
-      </div>
+      <div className="mainContainer">{processedStudents}</div>
     </div>
   );
 }

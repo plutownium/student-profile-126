@@ -48,8 +48,7 @@
 .studentContainer {
   display: flex;
   flex-direction: row;
-  align-items: start;
-  /* border: 10px solid #aaa; */
+  align-items: flex-start;
 }
 
 .studentContainerHeightMod {
