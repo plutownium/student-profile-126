@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Expand from "../images/icons8-plus-+-48.png";
 
@@ -15,11 +15,12 @@ function Student({
   grades,
   pic,
   grabNewTag,
+  qualifiedTags,
 }) {
   const [showGrades, setShowGrades] = useState(false);
   const [tags, setTags] = useState([]);
   const [newTagMaterial, setNewTagMaterial] = useState([]);
-  // todo: get Tagging to push state into Student state
+  // todo: if tags in remainingTags, then display Student. else, hide Student.
 
   function calculateGPA(gradesInput) {
     let calculatedGPA = 0;
@@ -36,6 +37,21 @@ function Student({
   function handler(target) {
     setTags(target);
   }
+
+  let renderIsQualified = () => {};
+
+  useEffect(() => {
+    // this useEffect scans using input from the Tags filter
+    // to test whether the current Student has the Tag to qualify for rendering.
+    for (let i = 0; i < qualifiedTags.length; i++) {
+      for (let j = 0; j < tags.length; j++) {
+        if (qualifiedTags[i] === tags[j]) {
+          // Return if common element found -- because that means the tag was in the filter.
+          return true;
+        }
+      }
+    }
+  }, [tags]);
 
   return (
     <div className="debug3">

@@ -51,6 +51,7 @@ function Fetcher() {
           pic={student.pic}
           className="testSuccessClass"
           grabNewTag={grabNewTag}
+          qualifiedTags={allTags} // TODO: use the contents of allTags to inform Student component to render or not render.
         />
       )
     );
@@ -60,6 +61,7 @@ function Fetcher() {
     let onlySearchingByTag = nameFilterTargetText.length === 0;
 
     // TODO: make into Switch Statement
+    console.log(filterIsOff, onlySearchingByName, onlySearchingByTag);
     if (nameFilterTargetText.length > 0 && onlySearchingByName) {
       console.log("FILTER BY NAME");
       // yes, redundancy in logic gate
@@ -75,6 +77,11 @@ function Fetcher() {
       }
       return filteredList;
     }
+    // TODO: hardcode tag filter result. just to see it.
+    if (onlySearchingByTag) {
+      // ?
+    }
+    // TODO: check if both name and tag filters work simultaneously, then do styling.
     return processedStudentsList;
   }
 
