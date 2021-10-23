@@ -5,6 +5,7 @@ import "./Student.css";
 
 function Student({ firstName, lastName, email, company, skill, grades, pic }) {
   const [showGrades, setShowGrades] = useState(false);
+  const [tags, setTags] = useState([]);
 
   function calculateGPA(gradesInput) {
     let calculatedGPA = 0;
@@ -71,6 +72,10 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
             ) : (
               <div></div>
             )}
+          </div>
+          <div className="studentTagsContainer">
+              <div>{tags}</div>
+              <div><input/><button onClick={}>Set Tag</button></div>
           </div>
         </div>
       </div>
