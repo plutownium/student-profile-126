@@ -26,7 +26,8 @@ function Tagging({ currentTags, retrieveNewTag, customFunc }) {
           onClick={() => {
             console.log(currentTags, newTagMaterial, retrieveNewTag);
             let tags = currentTags.push(newTagMaterial);
-            retrieveNewTag("bob");
+            // retrieveNewTag("bob");
+            retrieveNewTag(newTagMaterial);
             customFunc("success was here");
           }}
         >

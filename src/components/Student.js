@@ -26,12 +26,14 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
   function retrieveNewTag(novelTag) {
     let currentTags = tags;
     let updatedTags = currentTags.push(novelTag);
-    setTags(updatedTags);
+    console.log("*******\nUPDATING TAGS", currentTags, novelTag, updatedTags);
+    // setTags(updatedTags);
     //
   }
 
   function success(target) {
-    console.log(target);
+    console.log("in the success func:", target);
+    setTags(tags.push(target));
   }
 
   return (
@@ -91,9 +93,12 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
           </div>
           <div className="genericFlexColumn">
             <div className="genericFlexRow">
-              {tags.map((tag, index) => {
-                return <Tag content={tag} key={index} />;
-              })}
+              <span>111: {tags}</span>
+              {tags.length > 0
+                ? tags.map((tag, index) => {
+                    return <Tag content={tag} key={index} />;
+                  })
+                : null}
               {/* <Tag content={"Tag1"} /> */}
               {/* <Tag content={"TagTwo"} /> */}
             </div>
