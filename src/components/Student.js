@@ -39,6 +39,7 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
             </p>
             <p className="detailsPolicy">
               Average: <span>{calculateGPA(grades)}</span>
+              <button onClick={setRevealedScores(!setRevealedScores)}>+</button>
             </p>
           </div>
         </div>
