@@ -10,8 +10,8 @@ import "./Filter.css";
 
 function Fetcher() {
   const [students, setStudents] = useState([]);
-  const [processedList, setProcessedList] = useState([]);
   const [filterTargetText, setFilterTargetText] = useState("");
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
     console.log("page loaded correct");
@@ -26,21 +26,47 @@ function Fetcher() {
   });
 
   function processStudentsData(students) {
-    const fixed = students.map((student) => (
-      <Student
-        key={student.id}
-        firstName={student.firstName}
-        lastName={student.lastName}
-        // city={student.city}
-        email={student.email}
-        company={student.company}
-        skill={student.skill}
-        grades={student.grades}
-        pic={student.pic}
-        className="testSuccessClass"
-      />
-    ));
-    return fixed;
+    let processedStudentsList = null;
+    let isFilteredByString = filterTargetText !== "";
+    if (isFilteredByString) {
+      const filteredStudents = students.filter((student) => {
+        const fullName = student.firstName + " " + student.lastName;
+        if (!fullName.includes(filterTargetText)) {
+          <Student
+            key={student.id}
+            firstName={student.firstName}
+            lastName={student.lastName}
+            // city={student.city}
+            email={student.email}
+            company={student.company}
+            skill={student.skill}
+            grades={student.grades}
+            pic={student.pic}
+            className="testSuccessClass"
+            tags={["cat", "fish", "bird"]}
+          />;
+        }
+      });
+      return filteredStudents;
+    } else {
+      processedStudentsList = students.map((student) => (
+        <Student
+          key={student.id}
+          firstName={student.firstName}
+          lastName={student.lastName}
+          // city={student.city}
+          email={student.email}
+          company={student.company}
+          skill={student.skill}
+          grades={student.grades}
+          pic={student.pic}
+          className="testSuccessClass"
+          tags={["cat", "fish", "bird"]}
+        />
+      ));
+    }
+
+    return processedStudentsList;
   }
 
   return (
@@ -51,7 +77,6 @@ function Fetcher() {
             id="filterInput"
             onChange={(event) => {
               console.log("checking...", event.target.value);
-              setTarget(event.target.value);
             }}
             placeholder="Search by name..."
           />
