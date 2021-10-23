@@ -96,7 +96,6 @@ function Fetcher() {
             className="mosaicInputStyling filterInput"
             id="nameFiltering"
             onChange={(event) => {
-              console.log("checking...", event.target.value);
               setNameFilter(event.target.value);
             }}
             placeholder="Search by name..."
@@ -107,7 +106,6 @@ function Fetcher() {
             className="mosaicInputStyling filterInput"
             id="tagFiltering"
             onChange={(event) => {
-              console.log("checking...", event.target.value);
               setAllTags(event.target.value); // handle "tag1" && "tag1, tag2";
             }}
             placeholder="Search by tag..."

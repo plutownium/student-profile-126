@@ -38,23 +38,43 @@ function Student({
     setTags(target);
   }
 
-  let renderIsQualified = () => {};
-
   useEffect(() => {
-    // this useEffect scans using input from the Tags filter
-    // to test whether the current Student has the Tag to qualify for rendering.
-    for (let i = 0; i < qualifiedTags.length; i++) {
-      for (let j = 0; j < tags.length; j++) {
-        if (qualifiedTags[i] === tags[j]) {
-          // Return if common element found -- because that means the tag was in the filter.
-          return true;
-        }
-      }
-    }
-  }, [tags]);
+    console.log(
+      "tags:",
+      tags,
+      "\ngrabNewTag:",
+      grabNewTag,
+      "\nqualifiedTags:",
+      qualifiedTags,
+      newTagMaterial
+    );
+  });
+
+  // useEffect(() => {
+  //   // this useEffect scans using input from the Tags filter
+  //   // to test whether the current Student has the Tag to qualify for rendering.
+
+  //   if (qualifiedTags.length > 0) {
+  //     console.log(qualifiedTags, "tag search initiated..."); // fixme: qualifiedTags is supposed to run *iff* tag search has an entry. currently its ??? something else
+  //     qualifiedForRender = false;
+  //     for (let i = 0; i < qualifiedTags.length; i++) {
+  //       for (let j = 0; j < tags.length; j++) {
+  //         if (qualifiedTags[i] === tags[j]) {
+  //           console.log(
+  //             "found these two as a match:",
+  //             qualifiedTags[i],
+  //             tags[j]
+  //           );
+  //           // Return if common element found -- because that means the tag was in the filter.
+  //           qualifiedForRender = true;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }, [tags]);
 
   return (
-    <div className="debug3">
+    <div className="">
       <div className="studentContainer ">
         <div className="imageContainerOuter ">
           <div className="imageContainerInner ">
