@@ -9,7 +9,7 @@ import "./Student.css";
 
 function Student({ firstName, lastName, email, company, skill, grades, pic }) {
   const [showGrades, setShowGrades] = useState(false);
-  const [tags, setTags] = useState(["one", "two"]);
+  const [tags, setTags] = useState([]);
 
   function calculateGPA(gradesInput) {
     let calculatedGPA = 0;
@@ -21,6 +21,17 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
     // turn back to string and truncate 2 decimal places
     calculatedGPA = calculatedGPA.toString().substring(0, 5);
     return calculatedGPA;
+  }
+
+  function retrieveNewTag(novelTag) {
+    let currentTags = tags;
+    let updatedTags = currentTags.push(novelTag);
+    setTags(updatedTags);
+    //
+  }
+
+  function success(target) {
+    console.log(target);
   }
 
   return (
@@ -81,14 +92,17 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
           <div className="genericFlexColumn">
             <div className="genericFlexRow">
               {tags.map((tag, index) => {
-                return <Tag content={tag} index={index} />;
+                return <Tag content={tag} key={index} />;
               })}
-              <Tag content={"Tag1"} />
-              <Tag content={"TagTwo"} />
-              <Tag content={"CatsCatsCatsx"} />
+              {/* <Tag content={"Tag1"} /> */}
+              {/* <Tag content={"TagTwo"} /> */}
             </div>
             <div>
-              <Tagging retrieveTags={setTags} />
+              <Tagging
+                currentTags={tags}
+                retrieveNewTag={retrieveNewTag}
+                customFunc={success}
+              />
             </div>
           </div>
         </div>

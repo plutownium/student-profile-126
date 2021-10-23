@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 
-function Tagging({ retrieveTags }) {
-  const [currentTags, setCurrentTags] = useState([]);
+import Tag from "./Tag";
+
+function Tagging({ currentTags, retrieveNewTag, customFunc }) {
+  //   const [currentTags, setCurrentTags] = useState([]);
   const [newTagMaterial, setNewTagMaterial] = useState(null); // fixme
-  const [tags, setTags] = useState([]);
+  //   const [tags, setTags] = useState([]);
   return (
     <div className="studentTagsContainer">
-      <div>{tags}</div>
+      {/* <div>
+        {currentTags.map((tag, index) => {
+          return <Tag content={tag} key={index} />;
+        })}
+      </div> */}
       <div>
         <input
           maxLength="9"
@@ -18,10 +24,10 @@ function Tagging({ retrieveTags }) {
         />
         <button
           onClick={() => {
-            console.log(currentTags, newTagMaterial, retrieveTags);
+            console.log(currentTags, newTagMaterial, retrieveNewTag);
             let tags = currentTags.push(newTagMaterial);
-            setCurrentTags(tags);
-            retrieveTags(currentTags);
+            retrieveNewTag("bob");
+            customFunc("success was here");
           }}
         >
           Set Tag
