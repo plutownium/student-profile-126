@@ -68,3 +68,7 @@
 #nameFilterWrapper {
   width: 100%;
 }
+
+.mosaicInputStyling {
+  border-bottom: 2px solid #999;
+}

@@ -6,7 +6,16 @@ import Tag from "./Tag";
 
 import "./Student.css";
 
-function Student({ firstName, lastName, email, company, skill, grades, pic }) {
+function Student({
+  firstName,
+  lastName,
+  email,
+  company,
+  skill,
+  grades,
+  pic,
+  grabNewTag,
+}) {
   const [showGrades, setShowGrades] = useState(false);
   const [tags, setTags] = useState([]);
   const [newTagMaterial, setNewTagMaterial] = useState([]);
@@ -101,6 +110,8 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
               <div className="studentTagsContainer">
                 <div>
                   <input
+                    className="mosaicInputStyling"
+                    placeholder="Add a tag"
                     maxLength="9"
                     onChange={(event) => {
                       console.log(event.target.value);
@@ -114,6 +125,7 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
                       const getTags = tags;
                       console.log("tags:", getTags, newTagMaterial);
                       // setTags?
+                      grabNewTag(newTagMaterial.toString());
                       if (tags.length === 0) {
                         let firstTag = [newTagMaterial.toString()];
                         setTags(firstTag);

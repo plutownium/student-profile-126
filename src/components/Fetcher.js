@@ -10,7 +10,8 @@ import "./Filter.css";
 
 function Fetcher() {
   const [students, setStudents] = useState([]);
-  const [filterTargetText, setFilterTargetText] = useState("");
+  const [nameFilterTargetText, setNameFilter] = useState("");
+  const [allTags, setAllTags] = useState("");
   // const [tagFilterTarget, setTagFilterTarget] = useState("");
 
   useEffect(() => {
@@ -25,11 +26,12 @@ function Fetcher() {
     });
   }, []);
 
-  // function passesCurrentFilter(student) {
-  //   let fullName = student.firstName + " " + student.lastName;
-  //   console.log(student, 99, fullName);
-  //   return fullName.indexOf(filterTargetText) > -1;
-  // }
+  function grabNewTag(pulledUpTag) {
+    console.log("new tag found:", pulledUpTag);
+    // TODO: lodge it into the fetcher tags list using spread operator
+    let totalTags = [...allTags, pulledUpTag];
+    setAllTags(totalTags);
+  }
 
   function processStudentsData(students) {
     let processedStudentsList = [];
@@ -48,13 +50,20 @@ function Fetcher() {
           grades={student.grades}
           pic={student.pic}
           className="testSuccessClass"
-          // tags={["cat", "fish", "bird"]} // woops
+          grabNewTag={grabNewTag}
         />
       )
     );
 
-    if (filterTargetText.length > 0) {
-      let upperFilterTargetText = filterTargetText.toUpperCase();
+    let filterIsOff = allTags.length === 0 && nameFilterTargetText.length === 0;
+    let onlySearchingByName = allTags.length === 0;
+    let onlySearchingByTag = nameFilterTargetText.length === 0;
+
+    if (nameFilterTargetText.length > 0 && onlySearchingByName) {
+      console.log("FILTER BY NAME");
+      // yes, redundancy in logic gate
+      // TODO: reshape to have "nameOnly, tagOnly, nameAndTag" sections
+      let upperFilterTargetText = nameFilterTargetText.toUpperCase();
       let filteredList = [];
       for (let i = 0; i < processedStudentsList.length; i++) {
         let upperCurrentEntry =
@@ -63,6 +72,21 @@ function Fetcher() {
           filteredList.push(processedStudentsList[i]);
         }
       }
+      return filteredList;
+    } else if (allTags.length > 0 && onlySearchingByTag) {
+      console.log("FILTER BY TAG");
+      // yes, redundancy in logic gate is there for a reason! safeguards...
+      let upperCaseTags = allTags.map((tag) => tag.toUpperCase());
+      // TODO: go down into students' states and pull up all of the tags ... or push them up on init
+      let filteredList = [];
+      // TODO: allow 2 tags to be searched for simultaneously, via a "," spacer
+      // for (let i = 0; i < processedStudentsList.length; i++) {}
+     } else if (filterIsOff) {
+        return processedStudentsList;
+      } else {
+
+      }
+      console.log(onlySearchingByName, onlySearchingByTag);
       return filteredList;
     }
     return processedStudentsList;
@@ -74,14 +98,26 @@ function Fetcher() {
   return (
     <div className="mainContainerOuterWrapper">
       <div id="filterContainerOuter">
-        <div id="filterContainerInner">
+        <div className="filterContainerInner">
           <input
-            id="filterInput"
+            className="mosaicInputStyling filterInput"
+            id="nameFiltering"
             onChange={(event) => {
               console.log("checking...", event.target.value);
-              setFilterTargetText(event.target.value);
+              setNameFilter(event.target.value);
             }}
             placeholder="Search by name..."
+          />
+        </div>
+        <div className="filterContainerInner ">
+          <input
+            className="mosaicInputStyling filterInput"
+            id="tagFiltering"
+            onChange={(event) => {
+              console.log("checking...", event.target.value);
+              setAllTags(event.target.value); // handle "tag1" && "tag1, tag2";
+            }}
+            placeholder="Search by tag..."
           />
         </div>
       </div>
