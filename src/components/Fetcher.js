@@ -59,6 +59,7 @@ function Fetcher() {
     let onlySearchingByName = allTags.length === 0;
     let onlySearchingByTag = nameFilterTargetText.length === 0;
 
+    // TODO: make into Switch Statement
     if (nameFilterTargetText.length > 0 && onlySearchingByName) {
       console.log("FILTER BY NAME");
       // yes, redundancy in logic gate
@@ -72,21 +73,6 @@ function Fetcher() {
           filteredList.push(processedStudentsList[i]);
         }
       }
-      return filteredList;
-    } else if (allTags.length > 0 && onlySearchingByTag) {
-      console.log("FILTER BY TAG");
-      // yes, redundancy in logic gate is there for a reason! safeguards...
-      let upperCaseTags = allTags.map((tag) => tag.toUpperCase());
-      // TODO: go down into students' states and pull up all of the tags ... or push them up on init
-      let filteredList = [];
-      // TODO: allow 2 tags to be searched for simultaneously, via a "," spacer
-      // for (let i = 0; i < processedStudentsList.length; i++) {}
-     } else if (filterIsOff) {
-        return processedStudentsList;
-      } else {
-
-      }
-      console.log(onlySearchingByName, onlySearchingByTag);
       return filteredList;
     }
     return processedStudentsList;
