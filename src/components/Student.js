@@ -9,6 +9,7 @@ import "./Student.css";
 function Student({ firstName, lastName, email, company, skill, grades, pic }) {
   const [showGrades, setShowGrades] = useState(false);
   const [tags, setTags] = useState([]);
+  const [newTagMaterial, setNewTagMaterial] = useState([]);
   // todo: get Tagging to push state into Student state
 
   function calculateGPA(gradesInput) {
@@ -87,13 +88,11 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
             {/* Show tags here */}
             {/* # # # # # # # # */}
             <div className="genericFlexRow">
-              <span>111: {tags}</span>
               {tags.length > 0
                 ? tags.map((tag, index) => {
                     return <Tag content={tag} key={index} />;
                   })
                 : null}
-              <Tag content={"Tag1"} key={999} />
             </div>
             {/*  */}
             {/* create your own tags here */}
@@ -113,9 +112,16 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
                   <button
                     onClick={() => {
                       const getTags = tags;
-                      console.log(getTags);
-                      throw "these are the tags";
-                      setTags(newTagMaterial);
+                      console.log("tags:", getTags, newTagMaterial);
+                      // setTags?
+                      if (tags.length === 0) {
+                        let firstTag = [newTagMaterial.toString()];
+                        setTags(firstTag);
+                      } else {
+                        let secondTag = newTagMaterial.toString();
+                        let newTags = [...tags, secondTag];
+                        setTags(newTags);
+                      }
                     }}
                   >
                     Set Tag
