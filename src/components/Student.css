@@ -97,6 +97,13 @@
   text-align: left;
 }
 
+.studentTagsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .debug1 {
   border: 5px solid cyan;
 }

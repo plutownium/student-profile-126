@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import Expand from "../images/icons8-plus-+-48.png";
 
-import Tagging from "./Tagging";
 import Tag from "./Tag";
 
 import "./Student.css";
@@ -10,6 +9,7 @@ import "./Student.css";
 function Student({ firstName, lastName, email, company, skill, grades, pic }) {
   const [showGrades, setShowGrades] = useState(false);
   const [tags, setTags] = useState([]);
+  // todo: get Tagging to push state into Student state
 
   function calculateGPA(gradesInput) {
     let calculatedGPA = 0;
@@ -23,17 +23,8 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
     return calculatedGPA;
   }
 
-  function retrieveNewTag(novelTag) {
-    let currentTags = tags;
-    let updatedTags = currentTags.push(novelTag);
-    console.log("*******\nUPDATING TAGS", currentTags, novelTag, updatedTags);
-    // setTags(updatedTags);
-    //
-  }
-
-  function success(target) {
-    console.log("in the success func:", target);
-    setTags(tags.push(target));
+  function handler(target) {
+    setTags(target);
   }
 
   return (
@@ -92,6 +83,9 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
             )}
           </div>
           <div className="genericFlexColumn">
+            {/* # # # # # # # # */}
+            {/* Show tags here */}
+            {/* # # # # # # # # */}
             <div className="genericFlexRow">
               <span>111: {tags}</span>
               {tags.length > 0
@@ -99,15 +93,35 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
                     return <Tag content={tag} key={index} />;
                   })
                 : null}
-              {/* <Tag content={"Tag1"} /> */}
-              {/* <Tag content={"TagTwo"} /> */}
+              <Tag content={"Tag1"} key={999} />
             </div>
+            {/*  */}
+            {/* create your own tags here */}
+            {/*  */}
             <div>
-              <Tagging
-                currentTags={tags}
-                retrieveNewTag={retrieveNewTag}
-                customFunc={success}
-              />
+              <div className="studentTagsContainer">
+                <div>
+                  <input
+                    maxLength="9"
+                    onChange={(event) => {
+                      console.log(event.target.value);
+                      if (event.target.value.length < 10) {
+                        setNewTagMaterial(event.target.value);
+                      }
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      const getTags = tags;
+                      console.log(getTags);
+                      throw "these are the tags";
+                      setTags(newTagMaterial);
+                    }}
+                  >
+                    Set Tag
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ import "./Filter.css";
 function Fetcher() {
   const [students, setStudents] = useState([]);
   const [filterTargetText, setFilterTargetText] = useState("");
-  const [tags, setTags] = useState([]);
+  // const [tagFilterTarget, setTagFilterTarget] = useState("");
 
   useEffect(() => {
     console.log("page loaded correct");
@@ -48,7 +48,7 @@ function Fetcher() {
           grades={student.grades}
           pic={student.pic}
           className="testSuccessClass"
-          tags={["cat", "fish", "bird"]}
+          // tags={["cat", "fish", "bird"]} // woops
         />
       )
     );
