@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 
 import Expand from "../images/icons8-plus-+-48.png";
+
+import Tagging from "./Tagging";
+import Tag from "./Tag";
+
 import "./Student.css";
 
 function Student({ firstName, lastName, email, company, skill, grades, pic }) {
   const [showGrades, setShowGrades] = useState(false);
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(["one", "two"]);
 
   function calculateGPA(gradesInput) {
     let calculatedGPA = 0;
@@ -59,6 +63,7 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
             <p className="detailsPolicy">
               Average: <span>{calculateGPA(grades)}</span>
             </p>
+
             {showGrades ? (
               <div>
                 {grades.map((grade, index) => {
@@ -73,9 +78,18 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
               <div></div>
             )}
           </div>
-          <div className="studentTagsContainer">
-              <div>{tags}</div>
-              <div><input/><button onClick={}>Set Tag</button></div>
+          <div className="genericFlexColumn">
+            <div className="genericFlexRow">
+              {tags.map((tag, index) => {
+                return <Tag content={tag} index={index} />;
+              })}
+              <Tag content={"Tag1"} />
+              <Tag content={"TagTwo"} />
+              <Tag content={"CatsCatsCatsx"} />
+            </div>
+            <div>
+              <Tagging retrieveTags={setTags} />
+            </div>
           </div>
         </div>
       </div>

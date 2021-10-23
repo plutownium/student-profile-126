@@ -1,0 +1,8 @@
+.tagBox {
+  border: 2px solid #bbb;
+  border-radius: 3px;
+  background-color: #ddd;
+  width: 70px;
+  margin-right: 10px;
+  text-align: center;
+}

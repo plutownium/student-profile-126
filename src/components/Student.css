@@ -11,6 +11,13 @@
   align-items: center;
 }
 
+.genericFlexColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .genericFlexRow {
   display: flex;
   justify-content: space-between;
