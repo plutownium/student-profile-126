@@ -20,9 +20,9 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
 
   return (
     <div className="debug3">
-      <div className="studentContainer studentContainerHeightMod">
-        <div className="imageContainerOuter imageContainerHeightMod">
-          <div className="imageContainerInner imageContainerHeightMod">
+      <div className="studentContainer ">
+        <div className="imageContainerOuter ">
+          <div className="imageContainerInner ">
             <img src={pic} alt="a profile pic" />
           </div>
         </div>
@@ -58,8 +58,19 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
             <p className="detailsPolicy">
               Average: <span>{calculateGPA(grades)}</span>
             </p>
-            <p>hey</p>
-            <p>hey</p>
+            {showGrades ? (
+              <div>
+                {grades.map((grade, index) => {
+                  return (
+                    <p className="detailsPolicy">
+                      Test {index + 1}: {grade}
+                    </p>
+                  );
+                })}
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
       </div>
@@ -68,11 +79,3 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
 }
 
 export default Student;
-
-// {showGrades ? (
-//   <div className="debug2">
-//     <p>Hi</p>
-//     <p>Hello</p>
-//     <p>Test</p>
-//   </div>
-// ) : null}
