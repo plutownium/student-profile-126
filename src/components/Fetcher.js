@@ -23,30 +23,18 @@ function Fetcher() {
         setStudents(studentData);
       }
     });
-  });
+  }, []);
 
   function processStudentsData(students) {
     let processedStudentsList = null;
     let isFilteredByString = filterTargetText !== "";
     if (isFilteredByString) {
-      const filteredStudents = students.filter((student) => {
+      let filteredStudents = students.filter((student) => {
         const fullName = student.firstName + " " + student.lastName;
-        if (!fullName.includes(filterTargetText)) {
-          <Student
-            key={student.id}
-            firstName={student.firstName}
-            lastName={student.lastName}
-            // city={student.city}
-            email={student.email}
-            company={student.company}
-            skill={student.skill}
-            grades={student.grades}
-            pic={student.pic}
-            className="testSuccessClass"
-            tags={["cat", "fish", "bird"]}
-          />;
-        }
+        console.log(typeof fullName, fullName);
+        fullName.includes(filterTargetText);
       });
+      console.log(50, 50, 50, 50, filteredStudents);
       return filteredStudents;
     } else {
       processedStudentsList = students.map((student) => (
@@ -77,6 +65,7 @@ function Fetcher() {
             id="filterInput"
             onChange={(event) => {
               console.log("checking...", event.target.value);
+              setFilterTargetText(event.target.value);
             }}
             placeholder="Search by name..."
           />
