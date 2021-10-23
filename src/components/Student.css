@@ -4,6 +4,16 @@
   font-family: "Raleway", sans-serif;
   font-weight: 300;
 }
+.detailsPolicyContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.gradesExpand {
+  height: 24px;
+  width: 24px;
+  border: 1px dotted black;
+}
 
 .imageContainerOuter {
   height: auto;

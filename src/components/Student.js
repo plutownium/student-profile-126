@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
-import "./Students.css";
+import Expand from "../images/icons8-plus-+-48.png";
+import "./Student.css";
 
 function Student({ firstName, lastName, email, company, skill, grades, pic }) {
+  const [showGrades, setShowGrades] = useState([]);
+
   function calculateGPA(gradesInput) {
     let calculatedGPA = 0;
     for (let i = 0; i < gradesInput.length; i++) {
@@ -37,9 +40,12 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
             <p className="detailsPolicy">
               Skill: <span>{skill}</span>
             </p>
-            <p className="detailsPolicy">
-              Average: <span>{calculateGPA(grades)}</span>
-            </p>
+            <div className="detailsPolicyContainer">
+              <p className="detailsPolicy">
+                Average: <span>{calculateGPA(grades)}</span>
+              </p>
+              <img className="gradesExpand" src={Expand} alt={"expand"} />
+            </div>
           </div>
         </div>
       </div>
