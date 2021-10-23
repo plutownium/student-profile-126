@@ -4,7 +4,7 @@ import Expand from "../images/icons8-plus-+-48.png";
 import "./Student.css";
 
 function Student({ firstName, lastName, email, company, skill, grades, pic }) {
-  const [showGrades, setShowGrades] = useState([]);
+  const [showGrades, setShowGrades] = useState(false);
 
   function calculateGPA(gradesInput) {
     let calculatedGPA = 0;
@@ -19,7 +19,7 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
   }
 
   return (
-    <div>
+    <div className="debug3">
       <div className="studentContainer studentContainerHeightMod">
         <div className="imageContainerOuter imageContainerHeightMod">
           <div className="imageContainerInner imageContainerHeightMod">
@@ -27,10 +27,25 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
           </div>
         </div>
         <div className="infoContainer">
-          <h3 className="namingPolicy">
-            {firstName} {lastName}
-          </h3>
-          <div className="studentDetails">
+          <div className="genericFlexRow">
+            <h3 className="namingPolicy">
+              {firstName} {lastName}
+            </h3>
+            <div
+              className="gradesExpandContainer"
+              onClick={() => {
+                console.log(grades);
+                setShowGrades(!showGrades);
+              }}
+            >
+              <img
+                className="gradesExpandContainer"
+                src={Expand}
+                alt="expand grades"
+              />
+            </div>
+          </div>
+          <div className="studentDetails debug3">
             <p className="detailsPolicy">
               Email: <span>{email}</span>
             </p>
@@ -40,12 +55,11 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
             <p className="detailsPolicy">
               Skill: <span>{skill}</span>
             </p>
-            <div className="detailsPolicyContainer">
-              <p className="detailsPolicy">
-                Average: <span>{calculateGPA(grades)}</span>
-              </p>
-              <img className="gradesExpand" src={Expand} alt={"expand"} />
-            </div>
+            <p className="detailsPolicy">
+              Average: <span>{calculateGPA(grades)}</span>
+            </p>
+            <p>hey</p>
+            <p>hey</p>
           </div>
         </div>
       </div>
@@ -54,3 +68,11 @@ function Student({ firstName, lastName, email, company, skill, grades, pic }) {
 }
 
 export default Student;
+
+// {showGrades ? (
+//   <div className="debug2">
+//     <p>Hi</p>
+//     <p>Hello</p>
+//     <p>Test</p>
+//   </div>
+// ) : null}
