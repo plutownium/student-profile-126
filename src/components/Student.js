@@ -55,14 +55,14 @@ function Student({
   function qualifyStudentViaTags(tagFilterTarget) {
     // as per video: if tagTarget registers as a Student's tag(s) value, show student.
     if (tagFilterTarget.length === 0) {
-      console.log("No qualifiers...", tags, tagFilterTarget);
+      // console.log("No qualifiers...", tags, tagFilterTarget);
       return true; // all are qualified if there is no tag filter input
     }
     if (tags.length) {
       console.log(tags);
     }
     for (let i = 0; i < tags.length; i++) {
-      if (tags[i] === tagFilterTarget) {
+      if (tags[i].includes(tagFilterTarget)) {
         console.log("MATCH:", tags[i], i, "with: ", tagFilterTarget);
         return true;
       }
