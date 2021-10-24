@@ -97,7 +97,7 @@ function Student({
                 />
               </div>
             </div>
-            <div className="studentDetails debug3">
+            <div className="studentDetails">
               <p className="detailsPolicy">
                 Email: <span>{email}</span>
               </p>
@@ -143,7 +143,7 @@ function Student({
                 <div className="studentTagsContainer noMargins">
                   <div>
                     <input
-                      className="mosaicInputStyling noMargins"
+                      className="mosaicInputStyling noMargins detailsPolicy"
                       placeholder="Add a tag"
                       maxLength="9"
                       onChange={(event) => {
@@ -152,25 +152,23 @@ function Student({
                           setNewTagMaterial(event.target.value);
                         }
                       }}
-                    />
-                    <button
-                      onClick={() => {
-                        // setTags?
-                        grabNewTag(newTagMaterial.toString());
-                        if (tags.length === 0) {
-                          let firstTag = [newTagMaterial.toString()];
-                          console.log("this is the first tag:", firstTag);
-                          setTags(firstTag);
-                        } else {
-                          let secondTag = newTagMaterial.toString();
-                          let newTags = [...tags, secondTag];
-                          console.log("these are the NEW tags:", newTags);
-                          setTags(newTags);
+                      onKeyDown={(event) => {
+                        if (event.keyCode === 13) {
+                          event.preventDefault();
+                          grabNewTag(newTagMaterial.toString());
+                          if (tags.length === 0) {
+                            let firstTag = [newTagMaterial.toString()];
+                            console.log("this is the first tag:", firstTag);
+                            setTags(firstTag);
+                          } else {
+                            let secondTag = newTagMaterial.toString();
+                            let newTags = [...tags, secondTag];
+                            console.log("these are the NEW tags:", newTags);
+                            setTags(newTags);
+                          }
                         }
                       }}
-                    >
-                      Set Tag
-                    </button>
+                    />
                   </div>
                 </div>
               </div>

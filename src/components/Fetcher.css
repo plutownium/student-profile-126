@@ -1,13 +1,16 @@
-.test {
-  font-size: 22px;
-  color: blue;
-}
-
 #mainContainerOuterWrapper {
   height: calc(100% - 80px);
+  width: 600px !important;
 }
 
 .mainContainer {
   height: 80vh;
   overflow-y: scroll;
+}
+
+.mainInputPolicy {
+  font-size: 18px;
+  margin-top: 18px;
+  padding-left: 2px;
+  font-weight: 100 !important;
 }

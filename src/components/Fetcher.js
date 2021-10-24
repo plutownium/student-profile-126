@@ -75,14 +75,19 @@ function Fetcher() {
     } else if (onlySearchingByName) {
       console.log("FILTER BY NAME");
       let upperFilterTargetText = nameFilterTargetText.toUpperCase();
+
       let filteredList = [];
       for (let i = 0; i < processedStudentsList.length; i++) {
         let upperCurrentEntry =
           processedStudentsList[i].props.fullName.toUpperCase();
         if (upperCurrentEntry.includes(upperFilterTargetText)) {
           filteredList.push(processedStudentsList[i]);
+          // TODO: when name is deleted, undo the filter-by-naming
+          // TODO: make vertical scroll into a fancy one
+          // todo: change btn to enter
         }
       }
+
       return filteredList;
     } else if (onlySearchingByTag) {
       return processedStudentsList; // because the filtering will be done downstream
@@ -109,9 +114,10 @@ function Fetcher() {
       <div id="filterContainerOuter">
         <div className="filterContainerInner">
           <input
-            className="mosaicInputStyling filterInput"
+            className="mosaicInputStyling filterInput mainInputPolicy w-95"
             id="nameFiltering"
             onChange={(event) => {
+              console.log(event.target.value, "in the input");
               setNameFilter(event.target.value);
             }}
             placeholder="Search by name..."
@@ -119,7 +125,7 @@ function Fetcher() {
         </div>
         <div className="filterContainerInner ">
           <input
-            className="mosaicInputStyling filterInput"
+            className="mosaicInputStyling filterInput mainInputPolicy w-95"
             id="tagFiltering"
             onChange={(event) => {
               console.log("SEARCH:", event.target.value);

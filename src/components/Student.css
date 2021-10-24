@@ -38,7 +38,7 @@
 .gradesExpand {
   height: 24px;
   width: 24px;
-  border: 1px dotted black;
+  /* border: 1px dotted black; */
 }
 
 .imageContainerOuter {
@@ -46,6 +46,7 @@
   width: 160px;
 }
 .imageContainerInner {
+  margin-top: 18px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -106,16 +107,4 @@
 
 .noMargins {
   margin: 0px 0px;
-}
-
-.debug1 {
-  border: 5px solid cyan;
-}
-
-.debug2 {
-  border: 5px solid green;
-}
-
-.debug3 {
-  border: 5px dotted darkorange;
 }

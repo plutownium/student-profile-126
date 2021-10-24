@@ -63,6 +63,7 @@
   /* border: 5px solid cyan; */
   background-color: white;
   border-radius: 10px;
+  width: 600px !important;
 }
 
 #nameFilterWrapper {
@@ -70,5 +71,19 @@
 }
 
 .mosaicInputStyling {
-  border-bottom: 2px solid #999;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #ddd;
+}
+
+.w-95 {
+  width: 95%;
+}
+
+input:hover {
+  border-color: black;
+}
+
+input:active {
+  border-color: black;
 }
