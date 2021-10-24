@@ -155,8 +155,6 @@ function Student({
                     />
                     <button
                       onClick={() => {
-                        const getTags = tags;
-                        console.log("tags:", getTags, newTagMaterial);
                         // setTags?
                         grabNewTag(newTagMaterial.toString());
                         if (tags.length === 0) {
