@@ -64,14 +64,16 @@ function Fetcher() {
       processedStudentsList.push(makeStudent(student))
     );
 
-    let filterIsOff = allTags.length === 0 && nameFilterTargetText.length === 0;
+    // definitions
     let onlySearchingByName = allTags.length === 0;
     let onlySearchingByTag = nameFilterTargetText.length === 0;
+    let filterIsOff = onlySearchingByName && onlySearchingByTag; // this seems like bad naming.
 
-    // TODO: make into Switch Statement
-    if (nameFilterTargetText.length > 0 && onlySearchingByName) {
+    if (filterIsOff) {
+      // no need to change anything...
+      return processedStudentsList;
+    } else if (onlySearchingByName) {
       console.log("FILTER BY NAME");
-      // yes, redundancy in logic gate
       let upperFilterTargetText = nameFilterTargetText.toUpperCase();
       let filteredList = [];
       for (let i = 0; i < processedStudentsList.length; i++) {
@@ -80,16 +82,23 @@ function Fetcher() {
         if (upperCurrentEntry.includes(upperFilterTargetText)) {
           filteredList.push(processedStudentsList[i]);
         }
-      } 
-    } else if (allTags.length > 0 && onlySearchingByTag) {
-      return processedStudentsList
       }
-      
+      return filteredList;
+    } else if (onlySearchingByTag) {
+      return processedStudentsList; // because the filtering will be done downstream
+    } else {
+      // case where searching both by name and tag...
+      let upperFilterTargetText = nameFilterTargetText.toUpperCase();
+      let filteredList = [];
+      for (let i = 0; i < processedStudentsList.length; i++) {
+        let upperCurrentEntry =
+          processedStudentsList[i].props.fullName.toUpperCase();
+        if (upperCurrentEntry.includes(upperFilterTargetText)) {
+          filteredList.push(processedStudentsList[i]);
+        }
+      }
       return filteredList;
     }
-
-    // TODO: check if both name and tag filters work simultaneously, then do styling.
-    return processedStudentsList;
   }
 
   const processedStudents =
