@@ -4,7 +4,12 @@ import "./Tag.css";
 
 function Tag(props) {
   return (
-    <div className="tagBox">
+    <div
+      className="tagBox"
+      onClick={() => {
+        props.removeTag();
+      }}
+    >
       <p>{props.content}</p>
     </div>
   );

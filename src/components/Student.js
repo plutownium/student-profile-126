@@ -39,20 +39,19 @@ function Student({
     setTags(target);
   }
 
+  function removeTag() {
+    // subtract current tag from state
+  }
+
   const qualified = () => {
     if (qualifiedTags.length === 0) {
       console.log("No qualifiers...", qualifiedTags);
       return true; // all are qualified if there is no tag filter input
     }
     for (let i = 0; i < tags.length; i++) {
-      // for (let j = 0; j < qualifiedTags.length; j++) {
-      //   if (tags[i] === qualifiedTags[j]) {
-      //     console.log("MATCH:", tags[i], qualifiedTags[j]);
-      //     return true;
-      //   }
-      // }
       if (tags[i] === tagFilterTarget) {
-        return false;
+        console.log("MATCH:", tags[i], "with: ", tagFilterTarget);
+        return true;
       }
     }
     console.log("rejected because ... no hits from filter picks");
@@ -120,17 +119,17 @@ function Student({
             <div className="genericFlexColumn">
               {/* # # # # # # # # */}
               {/* Show tags here */}
-              {/* # # # # # # # # */}
               <div className="genericFlexRow">
                 {tags.length > 0
                   ? tags.map((tag, index) => {
-                      return <Tag content={tag} key={index} />;
+                      return (
+                        <Tag content={tag} key={index} removeTag={removeTag} />
+                      );
                     })
                   : null}
               </div>
               {/*  */}
               {/* create your own tags here */}
-              {/*  */}
               <div className="noMargins">
                 <div className="studentTagsContainer noMargins">
                   <div>

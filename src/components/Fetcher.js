@@ -5,9 +5,6 @@ import Student from "./Student";
 
 import "./Fetcher.css";
 
-import "./Filter";
-import "./Filter.css";
-
 function Fetcher() {
   const [students, setStudents] = useState([]);
   const [nameFilterTargetText, setNameFilter] = useState("");
@@ -72,12 +69,11 @@ function Fetcher() {
       processedStudentsList.push(makeStudent(student))
     );
 
-    let filterIsOff = allTags.length === 0 && nameFilterTargetText.length === 0;
+    // let filterIsOff = allTags.length === 0 && nameFilterTargetText.length === 0;
     let onlySearchingByName = allTags.length === 0;
-    let onlySearchingByTag = nameFilterTargetText.length === 0;
+    // let onlySearchingByTag = nameFilterTargetText.length === 0;
 
     // TODO: make into Switch Statement
-    console.log(filterIsOff, onlySearchingByName, onlySearchingByTag);
     if (nameFilterTargetText.length > 0 && onlySearchingByName) {
       console.log("FILTER BY NAME");
       // yes, redundancy in logic gate
@@ -91,12 +87,13 @@ function Fetcher() {
           filteredList.push(processedStudentsList[i]);
         }
       }
+
+      // i want to see here: "Excluding student <name> because <tag> is MIA."
+      // and: "Student <name> stays because <tag> is present."
+
       return filteredList;
     }
-    // TODO: hardcode tag filter result. just to see it.
-    if (onlySearchingByTag) {
-      // ?
-    }
+
     // TODO: check if both name and tag filters work simultaneously, then do styling.
     return processedStudentsList;
   }
