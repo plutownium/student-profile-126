@@ -27,10 +27,19 @@ function Fetcher() {
   }, []);
 
   function grabNewTag(pulledUpTag) {
+    let newArr;
+    if (allTags.length === 0) {
+      newArr = [];
+    } else {
+      newArr = allTags.slice();
+    }
     console.log("new tag found:", pulledUpTag);
-    // TODO: lodge it into the fetcher tags list using spread operator
-    let totalTags = [...allTags, pulledUpTag];
-    setAllTags(totalTags);
+    console.log("aAaAaA", allTags);
+    console.log("aaaaa:", newArr);
+    newArr.push(pulledUpTag);
+
+    console.log(33, newArr);
+    setAllTags(newArr);
   }
 
   function processStudentsData(students) {
