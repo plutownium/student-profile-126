@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Expand from "../images/icons8-plus-+-48.png";
 
@@ -35,10 +35,6 @@ function Student({
     return calculatedGPA;
   }
 
-  function handler(target) {
-    setTags(target);
-  }
-
   function removeTag(removedTag) {
     // subtract current tag from state
     let remainingTags = [];
@@ -59,7 +55,7 @@ function Student({
       return true; // all are qualified if there is no tag filter input
     }
     if (tags.length) {
-      console.log(tags);
+      // console.log(tags);
     }
     for (let i = 0; i < tags.length; i++) {
       if (tags[i].includes(tagFilterTarget)) {

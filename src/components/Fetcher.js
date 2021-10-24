@@ -21,7 +21,7 @@ function Fetcher() {
         setStudents(studentData);
       }
     });
-  }, []);
+  }, [students.length]);
 
   function grabNewTag(pulledUpTag) {
     let newArr = [];
@@ -64,15 +64,14 @@ function Fetcher() {
       processedStudentsList.push(makeStudent(student))
     );
 
-    // let filterIsOff = allTags.length === 0 && nameFilterTargetText.length === 0;
+    let filterIsOff = allTags.length === 0 && nameFilterTargetText.length === 0;
     let onlySearchingByName = allTags.length === 0;
-    // let onlySearchingByTag = nameFilterTargetText.length === 0;
+    let onlySearchingByTag = nameFilterTargetText.length === 0;
 
     // TODO: make into Switch Statement
     if (nameFilterTargetText.length > 0 && onlySearchingByName) {
       console.log("FILTER BY NAME");
       // yes, redundancy in logic gate
-      // TODO: reshape to have "nameOnly, tagOnly, nameAndTag" sections
       let upperFilterTargetText = nameFilterTargetText.toUpperCase();
       let filteredList = [];
       for (let i = 0; i < processedStudentsList.length; i++) {
@@ -81,11 +80,11 @@ function Fetcher() {
         if (upperCurrentEntry.includes(upperFilterTargetText)) {
           filteredList.push(processedStudentsList[i]);
         }
+      } 
+    } else if (allTags.length > 0 && onlySearchingByTag) {
+      return processedStudentsList
       }
-
-      // i want to see here: "Excluding student <name> because <tag> is MIA."
-      // and: "Student <name> stays because <tag> is present."
-
+      
       return filteredList;
     }
 
