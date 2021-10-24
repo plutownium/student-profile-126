@@ -12,7 +12,7 @@ function Fetcher() {
   const [students, setStudents] = useState([]);
   const [nameFilterTargetText, setNameFilter] = useState("");
   const [allTags, setAllTags] = useState("");
-  // const [tagFilterTarget, setTagFilterTarget] = useState("");
+  const [tagFilterTarget, setTagFilterTarget] = useState("");
 
   useEffect(() => {
     console.log("page loaded correct");
@@ -118,7 +118,7 @@ function Fetcher() {
             className="mosaicInputStyling filterInput"
             id="tagFiltering"
             onChange={(event) => {
-              setAllTags(event.target.value); // handle "tag1" && "tag1, tag2";
+              setTagFilterTarget(event.target.value); // handle "tag1" && "tag1, tag2";
             }}
             placeholder="Search by tag..."
           />

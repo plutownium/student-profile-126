@@ -40,20 +40,24 @@ function Student({
 
   const qualified = () => {
     if (qualifiedTags.length === 0) {
-      console.log(qualifiedTags);
+      console.log("No qualifiers...", qualifiedTags);
       return true; // all are qualified if there is no tag filter input
     }
     for (let i = 0; i < tags.length; i++) {
       for (let j = 0; j < qualifiedTags.length; j++) {
         if (tags[i] === qualifiedTags[j]) {
+          console.log("MATCH:", tags[i], qualifiedTags[j]);
           return true;
         }
       }
     }
+    console.log("rejected because ... no hits from filter picks");
     return false; // will return false if no matches are qualified
   };
 
-  if (qualified) {
+  const studentPassesTagFilter = qualified();
+
+  if (studentPassesTagFilter) {
     return (
       <div className="">
         <div className="studentContainer ">
