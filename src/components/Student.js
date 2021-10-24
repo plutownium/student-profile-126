@@ -45,11 +45,14 @@ function Student({
       return true; // all are qualified if there is no tag filter input
     }
     for (let i = 0; i < tags.length; i++) {
-      for (let j = 0; j < qualifiedTags.length; j++) {
-        if (tags[i] === qualifiedTags[j]) {
-          console.log("MATCH:", tags[i], qualifiedTags[j]);
-          return true;
-        }
+      // for (let j = 0; j < qualifiedTags.length; j++) {
+      //   if (tags[i] === qualifiedTags[j]) {
+      //     console.log("MATCH:", tags[i], qualifiedTags[j]);
+      //     return true;
+      //   }
+      // }
+      if (tags[i] === tagFilterTarget) {
+        return false;
       }
     }
     console.log("rejected because ... no hits from filter picks");

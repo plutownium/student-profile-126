@@ -45,28 +45,31 @@ function Fetcher() {
     setAllTags(newArr);
   }
 
+  function makeStudent(student) {
+    return (
+      <Student
+        key={student.id}
+        fullName={student.firstName + " " + student.lastName}
+        firstName={student.firstName}
+        lastName={student.lastName}
+        email={student.email}
+        company={student.company}
+        skill={student.skill}
+        grades={student.grades}
+        pic={student.pic}
+        className="testSuccessClass"
+        grabNewTag={grabNewTag}
+        qualifiedTags={allTags} // TODO: use the contents of allTags to inform Student component to render or not render.
+        tagFilterTarget={tagFilterTarget}
+      />
+    );
+  }
+
   function processStudentsData(students) {
     let processedStudentsList = [];
 
     students.forEach((student) =>
-      processedStudentsList.push(
-        <Student
-          key={student.id}
-          fullName={student.firstName + " " + student.lastName}
-          firstName={student.firstName}
-          lastName={student.lastName}
-          // city={student.city}
-          email={student.email}
-          company={student.company}
-          skill={student.skill}
-          grades={student.grades}
-          pic={student.pic}
-          className="testSuccessClass"
-          grabNewTag={grabNewTag}
-          qualifiedTags={allTags} // TODO: use the contents of allTags to inform Student component to render or not render.
-          tagFilterTarget={tagFilterTarget}
-        />
-      )
+      processedStudentsList.push(makeStudent(student))
     );
 
     let filterIsOff = allTags.length === 0 && nameFilterTargetText.length === 0;
