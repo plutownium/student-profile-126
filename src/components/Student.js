@@ -16,6 +16,7 @@ function Student({
   pic,
   grabNewTag,
   qualifiedTags,
+  tagFilterTarget,
 }) {
   const [showGrades, setShowGrades] = useState(false);
   const [tags, setTags] = useState([]);

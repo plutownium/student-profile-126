@@ -64,6 +64,7 @@ function Fetcher() {
           className="testSuccessClass"
           grabNewTag={grabNewTag}
           qualifiedTags={allTags} // TODO: use the contents of allTags to inform Student component to render or not render.
+          tagFilterTarget={tagFilterTarget}
         />
       )
     );
