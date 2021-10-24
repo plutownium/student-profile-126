@@ -104,6 +104,10 @@
   align-items: flex-start;
 }
 
+.noMargins {
+  margin: 0px 0px;
+}
+
 .debug1 {
   border: 5px solid cyan;
 }

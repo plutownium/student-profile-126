@@ -38,118 +38,136 @@ function Student({
     setTags(target);
   }
 
-  return (
-    <div className="">
-      <div className="studentContainer ">
-        <div className="imageContainerOuter ">
-          <div className="imageContainerInner ">
-            <img src={pic} alt="a profile pic" />
-          </div>
-        </div>
-        <div className="infoContainer">
-          <div className="genericFlexRow">
-            <h3 className="namingPolicy">
-              {firstName} {lastName}
-            </h3>
-            <div
-              className="gradesExpandContainer"
-              onClick={() => {
-                console.log(grades);
-                setShowGrades(!showGrades);
-              }}
-            >
-              <img
-                className="gradesExpandContainer"
-                src={Expand}
-                alt="expand grades"
-              />
-            </div>
-          </div>
-          <div className="studentDetails debug3">
-            <p className="detailsPolicy">
-              Email: <span>{email}</span>
-            </p>
-            <p className="detailsPolicy">
-              Company: <span>{company}</span>
-            </p>
-            <p className="detailsPolicy">
-              Skill: <span>{skill}</span>
-            </p>
-            <p className="detailsPolicy">
-              Average: <span>{calculateGPA(grades)}</span>
-            </p>
+  const qualified = () => {
+    if (qualifiedTags.length === 0) {
+      console.log(qualifiedTags);
+      return true; // all are qualified if there is no tag filter input
+    }
+    for (let i = 0; i < tags.length; i++) {
+      for (let j = 0; j < qualifiedTags.length; j++) {
+        if (tags[i] === qualifiedTags[j]) {
+          return true;
+        }
+      }
+    }
+    return false; // will return false if no matches are qualified
+  };
 
-            {showGrades ? (
-              <div>
-                {grades.map((grade, index) => {
-                  return (
-                    <p className="detailsPolicy">
-                      Test {index + 1}: {grade}
-                    </p>
-                  );
-                })}
-              </div>
-            ) : (
-              <div></div>
-            )}
-          </div>
-          <div className="genericFlexColumn">
-            {/* # # # # # # # # */}
-            {/* Show tags here */}
-            {/* # # # # # # # # */}
-            <div className="genericFlexRow">
-              {tags.length > 0
-                ? tags.map((tag, index) => {
-                    return <Tag content={tag} key={index} />;
-                  })
-                : null}
+  if (qualified) {
+    return (
+      <div className="">
+        <div className="studentContainer ">
+          <div className="imageContainerOuter ">
+            <div className="imageContainerInner ">
+              <img src={pic} alt="a profile pic" />
             </div>
-            {/*  */}
-            {/* create your own tags here */}
-            {/*  */}
-            <div>
-              <div className="studentTagsContainer">
+          </div>
+          <div className="infoContainer">
+            <div className="genericFlexRow">
+              <h3 className="namingPolicy">
+                {firstName} {lastName}
+              </h3>
+              <div
+                className="gradesExpandContainer"
+                onClick={() => {
+                  console.log(grades);
+                  setShowGrades(!showGrades);
+                }}
+              >
+                <img
+                  className="gradesExpandContainer"
+                  src={Expand}
+                  alt="expand grades"
+                />
+              </div>
+            </div>
+            <div className="studentDetails debug3">
+              <p className="detailsPolicy">
+                Email: <span>{email}</span>
+              </p>
+              <p className="detailsPolicy">
+                Company: <span>{company}</span>
+              </p>
+              <p className="detailsPolicy">
+                Skill: <span>{skill}</span>
+              </p>
+              <p className="detailsPolicy">
+                Average: <span>{calculateGPA(grades)}</span>
+              </p>
+
+              {showGrades ? (
                 <div>
-                  <input
-                    className="mosaicInputStyling"
-                    placeholder="Add a tag"
-                    maxLength="9"
-                    onChange={(event) => {
-                      console.log(event.target.value);
-                      if (event.target.value.length < 10) {
-                        setNewTagMaterial(event.target.value);
-                      }
-                    }}
-                  />
-                  <button
-                    onClick={() => {
-                      const getTags = tags;
-                      console.log("tags:", getTags, newTagMaterial);
-                      // setTags?
-                      grabNewTag(newTagMaterial.toString());
-                      if (tags.length === 0) {
-                        let firstTag = [newTagMaterial.toString()];
-                        console.log("this is the first tag:", firstTag);
-                        setTags(firstTag);
-                      } else {
-                        let secondTag = newTagMaterial.toString();
-                        let newTags = [...tags, secondTag];
-                        console.log("these are the NEW tags:", newTags);
-                        console.log(newTags);
-                        setTags(newTags);
-                      }
-                    }}
-                  >
-                    Set Tag
-                  </button>
+                  {grades.map((grade, index) => {
+                    return (
+                      <p className="detailsPolicy">
+                        Test {index + 1}: {grade}
+                      </p>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div></div>
+              )}
+            </div>
+            <div className="genericFlexColumn">
+              {/* # # # # # # # # */}
+              {/* Show tags here */}
+              {/* # # # # # # # # */}
+              <div className="genericFlexRow">
+                {tags.length > 0
+                  ? tags.map((tag, index) => {
+                      return <Tag content={tag} key={index} />;
+                    })
+                  : null}
+              </div>
+              {/*  */}
+              {/* create your own tags here */}
+              {/*  */}
+              <div className="noMargins">
+                <div className="studentTagsContainer noMargins">
+                  <div>
+                    <input
+                      className="mosaicInputStyling noMargins"
+                      placeholder="Add a tag"
+                      maxLength="9"
+                      onChange={(event) => {
+                        console.log(event.target.value);
+                        if (event.target.value.length < 10) {
+                          setNewTagMaterial(event.target.value);
+                        }
+                      }}
+                    />
+                    <button
+                      onClick={() => {
+                        const getTags = tags;
+                        console.log("tags:", getTags, newTagMaterial);
+                        // setTags?
+                        grabNewTag(newTagMaterial.toString());
+                        if (tags.length === 0) {
+                          let firstTag = [newTagMaterial.toString()];
+                          console.log("this is the first tag:", firstTag);
+                          setTags(firstTag);
+                        } else {
+                          let secondTag = newTagMaterial.toString();
+                          let newTags = [...tags, secondTag];
+                          console.log("these are the NEW tags:", newTags);
+                          setTags(newTags);
+                        }
+                      }}
+                    >
+                      Set Tag
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 }
 
 export default Student;

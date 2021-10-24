@@ -27,11 +27,14 @@ function Fetcher() {
   }, []);
 
   function grabNewTag(pulledUpTag) {
-    let newArr;
+    let newArr = [];
     if (allTags.length === 0) {
       newArr = [];
     } else {
+      console.warn("!!!!!!!!!!!!");
       newArr = allTags.slice();
+      console.log(newArr, allTags);
+      console.warn("!!!!!!!!!!!!");
     }
     console.log("new tag found:", pulledUpTag);
     console.log("aAaAaA", allTags);
