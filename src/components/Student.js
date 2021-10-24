@@ -44,34 +44,36 @@ function Student({
     let remainingTags = [];
     for (let i = 0; i < tags.length; i++) {
       if (tags[i] !== removedTag) {
-        console.log("pushing...", tags[i]);
+        // console.log("pushing...", tags[i]);
         remainingTags.push(tags[i]);
-      } else {
-        console.log("removing...", removedTag);
       }
     }
     console.log(remainingTags);
     setTags(remainingTags);
   }
 
-  const qualified = () => {
-    if (qualifiedTags.length === 0) {
-      console.log("No qualifiers...", qualifiedTags);
+  function qualifyStudentViaTags(tagFilterTarget) {
+    // as per video: if tagTarget registers as a Student's tag(s) value, show student.
+    if (tagFilterTarget.length === 0) {
+      console.log("No qualifiers...", tags, tagFilterTarget);
       return true; // all are qualified if there is no tag filter input
+    }
+    if (tags.length) {
+      console.log(tags);
     }
     for (let i = 0; i < tags.length; i++) {
       if (tags[i] === tagFilterTarget) {
-        console.log("MATCH:", tags[i], "with: ", tagFilterTarget);
+        console.log("MATCH:", tags[i], i, "with: ", tagFilterTarget);
         return true;
       }
     }
-    console.log("rejected because ... no hits from filter picks");
+    // console.log("rejected because ... no hits from filter picks");
     return false; // will return false if no matches are qualified
-  };
+  }
 
-  const studentPassesTagFilter = qualified();
+  const studentPassesTagFilter = qualifyStudentViaTags(tagFilterTarget);
 
-  if (true) {
+  if (studentPassesTagFilter) {
     return (
       <div className="">
         <div className="studentContainer ">

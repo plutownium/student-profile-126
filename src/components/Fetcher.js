@@ -28,14 +28,9 @@ function Fetcher() {
     if (allTags.length === 0) {
       newArr = [];
     } else {
-      console.warn("!!!!!!!!!!!!");
       newArr = allTags.slice();
       console.log(newArr, allTags);
-      console.warn("!!!!!!!!!!!!");
     }
-    console.log("new tag found:", pulledUpTag);
-    console.log("aAaAaA", allTags);
-    console.log("aaaaa:", newArr);
     newArr.push(pulledUpTag);
 
     console.log(33, newArr);
@@ -119,7 +114,8 @@ function Fetcher() {
             className="mosaicInputStyling filterInput"
             id="tagFiltering"
             onChange={(event) => {
-              setTagFilterTarget(event.target.value); // handle "tag1" && "tag1, tag2";
+              console.log("SEARCH:", event.target.value);
+              setTagFilterTarget(event.target.value);
             }}
             placeholder="Search by tag..."
           />
