@@ -39,8 +39,19 @@ function Student({
     setTags(target);
   }
 
-  function removeTag() {
+  function removeTag(removedTag) {
     // subtract current tag from state
+    let remainingTags = [];
+    for (let i = 0; i < tags.length; i++) {
+      if (tags[i] !== removedTag) {
+        console.log("pushing...", tags[i]);
+        remainingTags.push(tags[i]);
+      } else {
+        console.log("removing...", removedTag);
+      }
+    }
+    console.log(remainingTags);
+    setTags(remainingTags);
   }
 
   const qualified = () => {
@@ -60,7 +71,7 @@ function Student({
 
   const studentPassesTagFilter = qualified();
 
-  if (studentPassesTagFilter) {
+  if (true) {
     return (
       <div className="">
         <div className="studentContainer ">

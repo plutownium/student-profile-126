@@ -7,7 +7,7 @@ function Tag(props) {
     <div
       className="tagBox"
       onClick={() => {
-        props.removeTag();
+        props.removeTag(props.content);
       }}
     >
       <p>{props.content}</p>
